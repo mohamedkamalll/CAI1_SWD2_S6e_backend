@@ -1,47 +1,70 @@
 let data = [
-     {
-       id: 8,
-       name: "Sara",
-       age: 20,
-       gender: "female",
-     },
-     {
-       id: Math.floor((Math.random() * 800)),
-       name: "Omar",
-       age: 20,
-       gender: "male",
-     },
-     {
-       id: Math.floor((Math.random() * 800)),
-       name: "Ali",
-       age: 20,
-       gender: "male",
-     },
-     {
-       id: Math.floor((Math.random() * 800)),
-       name: "Salma",
-       age: 20,
-       gender: "female",
-     },
-     {
-       id: Math.floor((Math.random() * 800)),
-       name: "Ahmed",
-       age: 20,
-       gender: "male",
-     },
-     {
-       id: Math.floor((Math.random() * 800)),
-       name: "Farah",
-       age: 20,
-       gender: "female",
-     },
-   ]
+  {
+    id: 8,
+    name: "Sara",
+    age: 20,
+    gender: "female",
+  },
+  {
+    id: Math.floor((Math.random() * 800)),
+    name: "Omar",
+    age: 20,
+    gender: "male",
+  },
+  {
+    id: Math.floor((Math.random() * 800)),
+    name: "Ali",
+    age: 20,
+    gender: "male",
+  },
+  {
+    id: Math.floor((Math.random() * 800)),
+    name: "Salma",
+    age: 20,
+    gender: "female",
+  },
+  {
+    id: Math.floor((Math.random() * 800)),
+    name: "Ahmed",
+    age: 20,
+    gender: "male",
+  },
+  {
+    id: Math.floor((Math.random() * 800)),
+    name: "Farah",
+    age: 20,
+    gender: "female",
+  },
+]
 
-const getUsers = (req,res)=>{
-     // res.redirect("https://hello")
+
+const User = require("../model/userModel")
+// data.map((u)=>{
+//   const user = new User({
+//     name:u.name,
+//     age:u.age,
+//     gender:u.gender
+//   })
+//   user.save()
+// })
+const h = async ()=>{
+  console.log(await User.find())
+  const user = new User({
+    name:"Nour",
+    gender:"male"
+  })
+  user.save()
+}
+//h()
+
+const getUsers = async(req,res,next)=>{
+  console.log(await User.find())
+  
+
+  // res.redirect("https://hello")
       console.log("Get users called")
-         res.json(data)
-    }
+      res.json(data)
+      }
 
 const addUser = (req,res)=>{
      console.log("Add user called",req.body)
